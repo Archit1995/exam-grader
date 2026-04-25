@@ -1,0 +1,35 @@
+{
+    "manifest_version": 3,
+    "name": "Crowdmark Exam Grader",
+    "version": "1.0.0",
+    "description": "Automate handwritten exam grading on Crowdmark",
+    
+    "permissions": [
+        "activeTab",
+        "storage",
+        "scripting"
+    ],
+    
+    "host_permissions": [
+        "https://app.crowdmark.com/*",
+        "https://assets.crowdmark.com/*",
+        "http://localhost:5000/*"
+    ],
+    
+    "content_scripts": [
+        {
+            "matches": ["https://app.crowdmark.com/exams/*/grading/student/*/question/*"],
+            "js": ["content-script.js"],
+            "run_at": "document_idle"
+        }
+    ],
+    
+    "background": {
+        "service_worker": "background.js"
+    },
+    
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "Exam Grader"
+    }
+}

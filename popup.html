@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="popup-container">
+        <h2>🎓 Crowdmark Exam Grader</h2>
+        
+        <div id="status" class="status-section">
+            <div class="status-indicator" id="statusIndicator">⚡ Checking page...</div>
+        </div>
+        
+        <!-- TIER 1: Auto-Grading -->
+        <div id="tier1-mode">
+            <button id="gradeBtn" class="primary-button" disabled>
+                Grade This Question
+            </button>
+        </div>
+        
+        <!-- TIER 2: Confirmation Required -->
+        <div id="tier2-mode" style="display: none;">
+            <div style="margin-bottom: 12px;">
+                <p style="margin: 0 0 8px 0; font-size: 13px;">
+                    <strong>Please confirm:</strong> Is this the student's solution?
+                </p>
+                <img id="previewImage" style="width: 100%; border: 2px solid #2563eb; border-radius: 4px; margin-bottom: 12px;" />
+            </div>
+            <div style="display: flex; gap: 8px;">
+                <button id="confirmYes" class="primary-button" style="flex: 1; margin: 0;">
+                    ✓ Grade It
+                </button>
+                <button id="confirmNo" class="primary-button" style="flex: 1; margin: 0; background: #6c757d;">
+                    ✗ Select Different
+                </button>
+            </div>
+        </div>
+        
+        <!-- TIER 3: Manual Selection -->
+        <div id="tier3-mode" style="display: none;">
+            <div style="margin-bottom: 12px;">
+                <p style="margin: 0 0 8px 0; font-size: 13px;">
+                    <strong>Select the student's solution:</strong>
+                </p>
+                <p style="margin: 0; font-size: 11px; color: #666;">
+                    Click and drag to draw a box around the solution area
+                </p>
+            </div>
+            <button id="startSelection" class="primary-button">
+                📍 Start Selection
+            </button>
+            <button id="cancelSelection" class="primary-button" style="background: #6c757d;">
+                Cancel
+            </button>
+        </div>
+        
+        <!-- Results -->
+        <div id="results" class="results-section" style="display: none;">
+            <h3>✓ Grading Complete</h3>
+            <div id="resultsContent"></div>
+        </div>
+        
+        <div class="info-section">
+            <p><strong>How it works:</strong></p>
+            <ol>
+                <li>Click "Grade This Question"</li>
+                <li>If unsure, confirm the solution area</li>
+                <li>If wrong area, select it manually</li>
+                <li>Claude grades automatically</li>
+                <li>Review and move to next student</li>
+            </ol>
+        </div>
+    </div>
+    
+    <script src="popup.js"></script>
+</body>
+</html>
