@@ -1,0 +1,31 @@
+name: exam-grader
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  # Python version
+  - python=3.11
+  
+  # Conda packages (available in conda-forge/defaults)
+  - flask=2.3.3
+  - flask-cors=4.0.0
+  - requests=2.31.0
+  - jupyter=1.0.0
+  - ipython=8.14.0
+  - pytest=7.4.0
+  - pandas=2.0.3
+  - numpy=1.24.3
+  - black=23.7.0
+  - flake8=6.0.0
+  
+  # Pip installer
+  - pip
+  
+  # PyPI packages (installed via pip - only available on PyPI)
+  - pip:
+    - anthropic==0.7.0
+    - modal==0.62.0
+    - python-dotenv==1.0.0
+
+variables:
+  PYTHONUNBUFFERED: "1"
